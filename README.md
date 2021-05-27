@@ -55,7 +55,7 @@ By default the device assumes `ADO` pin is `LOW` and the device address `MPU_I2C
  * via the constructor: 
    `MPU6050 mpu(MPU_I2C_ADDRESS_AD1);`
 
- * or during runtime via the `setDeviceAddress()` method:
+ * or during runtime via the `setDeviceAddress(byte)` method:
    `setDeviceAddress(MPU_I2C_ADDRESS_AD1);`
 
 
@@ -64,13 +64,32 @@ The Gyro values can be calibrated by calling `calibrate()`, this takes the avera
 
 ## Advanced functionality
 
+### Range normalisation
+By default, Attitude readings are normalised between 0 and 180 degrees, however three range normalisation congiguratios are available.  These can be configured by calling the `setRange(range_t)` method with one of the following values:
 
-### IMU register configuration
-Gryo and Accelerometer range registers can be configured directly using
-setGyroConfig() and setAccConfig()
+ * `RANGE_THROUGH` pass-through, no normalisation.
+ * `RANGE_ABSOLUTE` absolute values, normalised between 0 and 360 degrees
+ * `RANGE_RELATIVE` relative values from the normal, normalised between -180 and 180 degrees (default)
+
 
 ### Handy radian/degrees conversion
-By default, attitude from the `getAttitude()` method returns attitude in degrees. If radians are prefered pass unit type `UNITS_RADIANS` in the method, e.g. `getAttitude(UNITS_RADIANS)`
+By default, attitude from the `getAttitude(units_t)` method returns attitude in degrees. If radians are prefered pass unit type `UNITS_RADIANS` in the method, e.g. `getAttitude(UNITS_RADIANS)`
+
+
+### IMU register configuration
+Gryo and Accelerometer range registers can be configured directly using the methods `setGyroConfig(byte)` and `setAccConfig(byte)`.
+
+**Acceptable gyro configuration values**
+ * MPU6050_GYRO_FULL_SCALE_250_DPS (default)
+ * MPU6050_GYRO_FULL_SCALE_500_DPS
+ * MPU6050_GYRO_FULL_SCALE_1000_DPS
+ * MPU6050_GYRO_FULL_SCALE_2000_DPS
+
+**Acceptabl;e accelerometer configuration values**
+ * MPU6050_ACC_FULL_SCALE_2_G (default)
+ * MPU6050_ACC_FULL_SCALE_4_G 
+ * MPU6050_ACC_FULL_SCALE_8_G 
+ * MPU6050_ACC_FULL_SCALE_16_G 
 
 
 ## Licence
