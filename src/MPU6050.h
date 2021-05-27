@@ -9,49 +9,49 @@
 #define MPU_I2C_ADDRESS_AD1                 0x69
 
 // config registers
-#define MPU6050_SMPLRT_DIV                  0x19  ///< sample rate divisor register
-#define MPU6050_CONFIG                      0x1A      ///< General configuration register
-#define MPU6050_GYRO_CONFIG                 0x1B ///< Gyro specfic configuration register
-#define MPU6050_ACCEL_CONFIG                0x1C ///< Accelerometer specific configration register
-#define MPU6050_INT_PIN_CONFIG              0x37    ///< Interrupt pin configuration register
-#define MPU6050_SIGNAL_PATH_RESET           0x68 ///< Signal path reset register
-#define MPU6050_USER_CTRL                   0x6A         ///< FIFO and I2C Master control register
-#define MPU6050_PWR_MGMT_1                  0x6B        ///< Primary power/sleep control register
-#define MPU6050_PWR_MGMT_2                  0x6C ///< Secondary power/sleep control register
-#define MPU6050_WHO_AM_I                    0x75          ///< Divice ID register
-#define MPU6050_DEVICE_ID                   0x68
+#define MPU6050_SMPLRT_DIV                  0x19    // sample rate divisor register
+#define MPU6050_CONFIG                      0x1A    // General configuration register
+#define MPU6050_GYRO_CONFIG                 0x1B    // Gyro specfic configuration register
+#define MPU6050_ACCEL_CONFIG                0x1C    // Accelerometer specific configration register
+#define MPU6050_INT_PIN_CONFIG              0x37    // Interrupt pin configuration register
+#define MPU6050_SIGNAL_PATH_RESET           0x68    // Signal path reset register
+#define MPU6050_USER_CTRL                   0x6A    // FIFO and I2C Master control register
+#define MPU6050_PWR_MGMT_1                  0x6B    // Primary power/sleep control register
+#define MPU6050_PWR_MGMT_2                  0x6C    // Secondary power/sleep control register
+#define MPU6050_WHO_AM_I                    0x75    // Device ID register
+#define MPU6050_DEVICE_ID                   0x68    // Device ID value
 
 // data registers
-#define MPU6050_TEMP_H                      0x41     ///< Temperature data high byte register
-#define MPU6050_TEMP_L                      0x42     ///< Temperature data low byte register
-#define MPU6050_ACCEL_OUT                   0x3B  ///< base address for sensor data reads
+#define MPU6050_TEMP_H                      0x41    // Temperature data high byte register
+#define MPU6050_TEMP_L                      0x42    // Temperature data low byte register
+#define MPU6050_ACCEL_OUT                   0x3B    // base address for sensor data reads (14 bytes wide)
 
 // interrupt registers
-#define MPU6050_MOT_THR                     0x1F        // Motion detection threshold bits [7:0]
-#define MPU6050_MOT_DUR                     0x20 // Duration counter threshold for motion interrupt generation, 1 kHz rate, LSB = 1 ms
+#define MPU6050_MOT_THR                     0x1F    // Motion detection threshold bits [7:0]
+#define MPU6050_MOT_DUR                     0x20    // Duration counter threshold for motion interrupt generation, 1 kHz rate, LSB = 1 ms
 #define MPU6050_MOT_DETECT_CTRL             0x69
 #define MPU6050_INT_ENABLE                  0x38
 
 // gyro configuration values
-#define MPU6050_GYRO_FULL_SCALE_250_DPS     0x00  // (default)
+#define MPU6050_GYRO_FULL_SCALE_250_DPS     0x00    // (default)
 #define MPU6050_GYRO_FULL_SCALE_500_DPS     0x08
 #define MPU6050_GYRO_FULL_SCALE_1000_DPS    0x10
 #define MPU6050_GYRO_FULL_SCALE_2000_DPS    0x18
 
 // accelerometer configuration values
-#define MPU6050_ACC_FULL_SCALE_2_G          0x00  // (default)
+#define MPU6050_ACC_FULL_SCALE_2_G          0x00    // (default)
 #define MPU6050_ACC_FULL_SCALE_4_G          0x08
 #define MPU6050_ACC_FULL_SCALE_8_G          0x10
 #define MPU6050_ACC_FULL_SCALE_16_G         0x18
 
 
 // conversions and constants
-#define RAD2DEG (57.29577793F)       
-#define DEG2RAD (0.017453293F)
-#define GRAVITY_STANDARD (9.80665F)
-#define CALIBRATION_COUNT 1000
-#define TWO_PI (6.2831853072F)
-#define PI (3.141592657F)
+#define RAD2DEG                             (57.29577793F)       
+#define DEG2RAD                             (0.017453293F)
+#define GRAVITY_STANDARD                    (9.80665F)
+#define CALIBRATION_COUNT                   1000
+#define TWO_PI                              (6.2831853072F)
+#define PI                                  (3.141592657F)
 
 
 typedef enum {
@@ -60,6 +60,7 @@ typedef enum {
 } units_t;
 
 typedef enum {
+    RANGE_THROUGH,  // pass through - don't normalise
     RANGE_RELATIVE, // normalise between [pi,pi] ([-180,180])
     RANGE_ABSOLUTE  // normalise between [0,2pi] ([0,360])
 } range_t;

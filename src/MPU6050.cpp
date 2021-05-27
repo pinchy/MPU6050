@@ -148,6 +148,8 @@ attitude_t MPU6050::getAttitude(units_t units)
 
 float MPU6050::_normalise(float x, range_t range)
 {
+    if(range == RANGE_THROUGH) return x;
+
     float offset = (range == RANGE_ABSOLUTE) ? 0 : 180; // set to 0 (RANGE_ABSOLUTE) for [0,360], to pi (RANGE_RELATIVE) for [-180,180]
     x = fmod(x + offset, 360);
     if(x < 0) x += 360;
