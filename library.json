@@ -1,0 +1,25 @@
+{
+    "name": "MPU6050",
+    "version": "0.1.0",
+    "description": "Lightweight Arduino library incorporating compensation filter to interface with the MPU6050",
+    "keywords": "MPU6050, IMU, Accelerometer",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/pinchy/MPU6050.git"
+    },
+    "authors":
+    [
+      {
+        "name": "Sebastien Eckersley-Maslin",
+        "url": "https://github.com/pinchy"
+      }
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/pinchy/MPU6050",
+    "dependencies": {
+      "ownername/print": "~0.1.0"
+    },
+    "frameworks": "Arduino",
+    "platforms": "*"
+  }
